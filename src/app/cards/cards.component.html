@@ -1,0 +1,63 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Paróquia de UL</a>
+        <span class="navbar-text ms-auto">
+            <strong>Telefone: </strong> 926 170 528
+        </span>
+    </div>
+</nav>
+
+<div *ngIf="isModalVisible" class="modal fade show" id="confirmationModal" tabindex="-1"
+    aria-labelledby="confirmationModalLabel" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirmar Envio</h5>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja enviar a seguinte mensagem para {{ phoneNumber }}?<br><br>
+                <strong>{{ selectedMessage }}</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="sendMessage()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div *ngFor="let card of cards" class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card shadow-sm border-light" (click)="toggleCard(card)">
+                <div class="card-body text-center position-relative">
+                    <i class="fa" [ngClass]="card.icon" style="font-size: 40px; color: #007bff;"></i>
+                    <h5 class="card-title mt-2">{{ card.title }}</h5>
+                    <p *ngIf="card.expanded" class="card-text">{{ card.description }}</p>
+
+                    <button *ngIf="card.expanded" class="btn btn-primary mt-2" (click)="openModal(card.title)">
+                        Enviar SMS
+                    </button>
+
+                    <div *ngIf="!card.expanded"
+                        class="d-flex justify-content-center align-items-center position-absolute"
+                        style="bottom: 10px; right: 10px; cursor: pointer;">
+                        <span class="me-2"></span>
+                        <i class="fa fa-arrow-down" style="font-size: 20px; color: #007bff;"></i>
+                    </div>
+
+                    <div *ngIf="card.expanded"
+                        class="d-flex justify-content-center align-items-center position-absolute"
+                        style="bottom: 10px; right: 10px; cursor: pointer;">
+                        <span class="me-2"></span>
+                        <i class="fa fa-arrow-up" style="font-size: 20px; color: #007bff;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
