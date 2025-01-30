@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export class CardsComponent {
   isModalVisible = false;
   selectedMessage: string = "";
-  phoneNumber = "910643037";
+  phoneNumber = "926170528";
 
   cards = [
     { title: "T1", description: "Sinal Funeral", icon: "fa-bell", expanded: false },
