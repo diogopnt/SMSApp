@@ -1,7 +1,7 @@
 {
   "name": "Paróquia de UL",
   "short_name": "Paróquia UL",
-  "start_url": "/",
+  "start_url": "/SMSApp/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
